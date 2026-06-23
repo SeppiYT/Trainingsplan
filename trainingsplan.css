@@ -1,0 +1,361 @@
+/* ============================================
+   ROCKY TRAININGSPLAN — Stylesheet
+   Oldschool Athletic Design
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg:         #111111;
+  --color-surface:    #1a1a1a;
+  --color-card:       #222222;
+  --color-border:     #333333;
+  --color-accent:     #c8a84b;       /* gold */
+  --color-accent-dim: #8a6f2e;
+  --color-text:       #f0ede8;
+  --color-muted:      #888888;
+  --color-danger:     #c0392b;
+
+  --font-display: 'Oswald', 'Impact', sans-serif;
+  --font-body:    'Barlow', 'Arial Narrow', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 1rem 4rem;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+}
+
+p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --- Layout --- */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* --- Hero Header --- */
+.hero {
+  border-bottom: 1px solid var(--color-border);
+  padding: 3rem 0 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero .eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-dim);
+}
+
+.hero .tagline {
+  font-size: 1rem;
+  color: var(--color-muted);
+  max-width: 480px;
+  margin-top: 0.25rem;
+}
+
+.hero .divider {
+  width: 48px;
+  height: 3px;
+  background: var(--color-accent);
+  margin-top: 1rem;
+}
+
+/* --- Week Overview Grid --- */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 3rem;
+}
+
+.day-card {
+  background: var(--color-card);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.2s;
+}
+
+.day-card:hover {
+  border-color: var(--color-accent-dim);
+}
+
+.day-card.rest {
+  background: var(--color-surface);
+  opacity: 0.6;
+}
+
+.day-card .day-label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.day-card .day-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+}
+
+.tag-kraft     { background: #1e1a33; color: #a89de0; border: 0.5px solid #3a2f70; }
+.tag-ausdauer  { background: #0d2318; color: #5dcaa5; border: 0.5px solid #1d5c3e; }
+.tag-kombi     { background: #2a1f05; color: #c8a84b; border: 0.5px solid #6b4f15; }
+.tag-rest      { background: #1a1a1a; color: #666;    border: 0.5px solid #333; }
+
+.exercise-list {
+  list-style: none;
+  margin-top: 4px;
+}
+
+.exercise-list li {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  padding: 4px 0;
+  border-bottom: 0.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.exercise-list li:last-child {
+  border-bottom: none;
+}
+
+.exercise-list li::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent-dim);
+  flex-shrink: 0;
+}
+
+/* --- Detail Section --- */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-header::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--color-border);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.detail-card {
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem;
+}
+
+.detail-day {
+  font-size: 0.7rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+}
+
+.detail-item {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  padding: 3px 0;
+  border-bottom: 0.5px solid #2a2a2a;
+  line-height: 1.5;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* --- Rocky Quote Box --- */
+.quote-box {
+  border-left: 3px solid var(--color-accent);
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: 2rem;
+}
+
+.quote-box .quote-label {
+  font-size: 0.65rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-dim);
+  margin-bottom: 0.4rem;
+}
+
+.quote-box p {
+  font-size: 0.88rem;
+  color: #aaa;
+  line-height: 1.7;
+}
+
+/* --- Progression Table --- */
+.prog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.prog-table th {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prog-table td {
+  padding: 8px 12px;
+  border-bottom: 0.5px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.prog-table tr:last-child td {
+  border-bottom: none;
+}
+
+.prog-table td:first-child {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* --- Footer --- */
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--color-border);
+  text-align: center;
+  font-size: 0.75rem;
+  color: #444;
+  font-family: var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .week-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding: 2rem 0 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .week-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Utility --- */
+.text-accent { color: var(--color-accent); }
+.text-muted  { color: var(--color-muted); }
+.mt-sm { margin-top: 0.5rem; }
+.mt-md { margin-top: 1rem; }
+.mt-lg { margin-top: 2rem; }
